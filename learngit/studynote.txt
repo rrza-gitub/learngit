@@ -1,0 +1,27 @@
+      这是git的学习笔记
+ 初始化git仓库：git init
+ 添加文件到git库；git add 名字   +git commit -m "注释“
+                  git管理的是修改，git add 会把工作区的修改放到暂存区，git commi                  t把暂存区的修改提交
+ 时间穿梭：head是当前版本，head^是上一个版本，head~n是往上n个版本；穿梭前先查看            提交历史：git log然后穿梭：git reset --hard 版本号
+ 查看状态：git status
+ 撤销修改：时间穿梭;git checkout -- file 丢弃工作区修改;git reset HEAD <file> 
+           +git checkout -- file丢弃已经放到暂存区的修改
+ 删除文件：git rm
+ 克隆仓库：先知道仓库的地址，然后git clone
+ 关于分支：查看分支git branch     创建分支git branch 名字     切换分支git checko           ut 名字git switch 名字       创建并且切换git checkout -b 名字                   git switch -c 名字       合并分支git merge名字                                 删除分支git branch -d 名字
+ 解决冲突：手动编辑合并失败的文件，然后提交git log -- graph可以看见分支合并图
+ 两种合并分支：fast forward看不出曾经做过合并，如果想看到，加上--no-ff
+ 修bug：修复bug时，创建新的bug分支进行修复，然后合并，删除。
+        手上还有工作时，先把工作现场git stash,修完后，git stash pop回到现场
+	在master上修复的bug想合并到当前分支，用git cherry-pick 把bug提交的修改复        制到当前分支
+ 强行删除分支：git branch -D 名字  
+ 多人协作：查看远程库信息git remote -v
+           本地新建的分支如果不推送到远程，对其他人就是不可见的；
+           从本地推送分支git push origin branch-name，如果推送失败，先用git pull           抓取远程的新提交；
+           在本地创建和远程分支对应的分支使用git checkout -b branch-name origin/           branch-name，本地和远程分支的名称最好一致；
+           建立本地分支和远程分支的关联，使用git branch --set-upstream branch-na           me origin/branch-name；
+           从远程抓取分支git pull，如果有冲突，要先处理冲突。
+ 关于标签：新建标签git tag 标签名 版本号   指定标签信息git tag -a 标签名 -m ""
+           查看所有标签git tag    推送标签 git push origin --tags      删除标签            git tag -d 标签名   删除远程标签git push origin :refs/tags/标签名
+
+
